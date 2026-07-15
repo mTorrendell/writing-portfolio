@@ -3,17 +3,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mercedes Torrendell — writing on AI, language, people</title>
+  <title>Mercedes Torrendell, writing on AI, language, people</title>
 
-  <meta name="description" content="Mercedes Torrendell — writer and interviewer on AI, language, and the people caught between them. Published at The Creative Independent." />
+  <meta name="description" content="Mercedes Torrendell, writer and interviewer on AI, language, and the people caught between them. Published at The Creative Independent." />
   <meta name="theme-color" content="#FAF9F5" />
+
+  <!-- favicon: a ring, ink on light tabs, white on dark tabs -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cstyle%3Ecircle%7Bstroke:%231C1B18%7D@media(prefers-color-scheme:dark)%7Bcircle%7Bstroke:%23FFFFFF%7D%7D%3C/style%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke-width='3'/%3E%3C/svg%3E">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Mercedes Torrendell — writing on AI, language, people" />
+  <meta property="og:title" content="Mercedes Torrendell, writing on AI, language, people" />
   <meta property="og:description" content="Writer and interviewer on AI, language, and the people caught between them. Published at The Creative Independent." />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Mercedes Torrendell — writing on AI, language, people" />
+  <meta name="twitter:title" content="Mercedes Torrendell, writing on AI, language, people" />
   <meta name="twitter:description" content="Writer and interviewer on AI, language, and the people caught between them." />
 
   <!-- Fonts -->
@@ -53,8 +56,9 @@
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
+    body.no-scroll { overflow: hidden; }
 
-    /* Full-page grain — barely there. Remove if it reads as "effect". */
+    /* Full-page grain, barely there. Remove if it reads as "effect". */
     body::before {
       content: "";
       position: fixed;
@@ -76,7 +80,8 @@
     a { color: inherit; text-decoration: none; }
 
     a:focus-visible,
-    .row:focus-visible {
+    .row:focus-visible,
+    .modal-close:focus-visible {
       outline: 2px solid var(--ink);
       outline-offset: 2px;
     }
@@ -100,7 +105,7 @@
       padding: clamp(72px, 16vw, 140px) 0 clamp(88px, 16vw, 128px);
       overflow: hidden;
     }
-    /* the halo — one soft radial, behind hero only */
+    /* the halo: one soft radial, behind hero only */
     .hero::before {
       content: "";
       position: absolute;
@@ -170,12 +175,29 @@
     /* ---------- index sections ---------- */
     section.index { padding-bottom: clamp(56px, 9vw, 96px); }
 
+    /* section headings: uppercase, small, tracked (amends brief for headings only) */
     .section-title {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: 18px;
-      color: var(--ink);
-      margin: 0 0 8px;
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin: 0 0 14px;
+    }
+
+    /* longer objective block under a heading, matches "the take" weight */
+    .section-intro {
+      max-width: 52ch;
+      font-size: 15px;
+      color: var(--ink-soft);
+      margin: 0 0 22px;
+    }
+    /* short one-line section note */
+    .section-note {
+      font-size: 13px;
+      color: var(--ink-faint);
+      margin: 0 0 16px;
     }
 
     .row {
@@ -189,6 +211,20 @@
     }
     .row:last-child { border-bottom: 1px solid var(--hairline); }
 
+    /* the SOFTER trigger is a real button, styled as a row */
+    button.row {
+      -webkit-appearance: none;
+      appearance: none;
+      background: none;
+      border: 0;
+      border-top: 1px solid var(--hairline);
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
+    }
+
     .row .body { min-width: 0; }
     .row .title {
       font-size: 15px;
@@ -199,12 +235,15 @@
       text-underline-offset: 3px;
       transition: text-decoration-color 0.25s ease;
     }
-    a.row:hover .title { text-decoration-color: var(--ink); }
+    a.row:hover .title,
+    button.row:hover .title { text-decoration-color: var(--ink); }
 
     .row .context {
+      display: block;
       font-size: 13px;
       color: var(--ink-faint);
-      margin-top: 3px;
+      margin-top: 8px;
+      line-height: 1.5;
     }
     .row .rtag {
       font-family: var(--mono);
@@ -217,6 +256,36 @@
 
     /* placeholder rows read as clearly not-yet-live */
     .row.pending .title { color: var(--ink-soft); }
+
+    /* ---------- Valerie question preview: left hairline only, no card ---------- */
+    .qpreview {
+      border-left: 1px solid var(--hairline);
+      padding: 2px 0 2px 16px;
+      margin: 14px 0 4px;
+    }
+    .qpreview .qlabel {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--ink-faint);
+      margin: 0;
+    }
+    .qpreview ol {
+      margin: 12px 0;
+      padding-left: 1.2em;
+    }
+    .qpreview li {
+      font-size: 13px;
+      color: var(--ink-soft);
+      line-height: 1.55;
+      margin: 10px 0;
+    }
+    .qpreview .qclose {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink-faint);
+      margin: 0;
+    }
 
     /* ---------- footer ---------- */
     footer.site {
@@ -241,6 +310,111 @@
       white-space: nowrap; border: 0;
     }
 
+    /* ---------- SOFTER modal ---------- */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: rgba(28, 27, 24, 0.4);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 40px 20px;
+      overflow-y: auto;
+    }
+    .modal-backdrop[hidden] { display: none; }
+
+    .modal {
+      position: relative;
+      background: var(--paper);
+      max-width: 640px;
+      width: 100%;
+      margin: auto;
+      padding: 44px 40px 40px;
+      animation: modalIn 0.2s ease;
+    }
+    @keyframes modalIn { from { opacity: 0; } to { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) {
+      .modal { animation: none; }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      -webkit-appearance: none;
+      appearance: none;
+      background: none;
+      border: 0;
+      font-family: var(--mono);
+      font-size: 20px;
+      line-height: 1;
+      color: var(--ink-faint);
+      cursor: pointer;
+      padding: 6px;
+    }
+    .modal-close:hover { color: var(--ink); }
+
+    .m-masthead {
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 15px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin: 0;
+    }
+    .m-sub {
+      font-size: 14px;
+      color: var(--ink-soft);
+      max-width: 52ch;
+      margin: 10px 0 0;
+    }
+    .m-legend {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink-faint);
+      line-height: 1.7;
+      margin: 18px 0 0;
+    }
+    .m-story {
+      border-top: 1px solid var(--hairline);
+      padding-top: 16px;
+      margin-top: 18px;
+    }
+    .m-tag {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink-faint);
+      margin: 0;
+    }
+    .m-title {
+      font-weight: 500;
+      font-size: 15px;
+      color: var(--ink);
+      margin: 4px 0 6px;
+    }
+    .m-body {
+      font-size: 14px;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+    .m-foot {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink-faint);
+      border-top: 1px solid var(--hairline);
+      margin-top: 24px;
+      padding-top: 14px;
+      line-height: 1.7;
+    }
+    .m-close-line {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink-faint);
+      margin: 14px 0 0;
+    }
+
     /* ---------- responsive: 360px ---------- */
     @media (max-width: 480px) {
       .wrap { padding: 0 20px; }
@@ -250,13 +424,15 @@
         gap: 6px;
       }
       .row .rtag { text-align: left; }
+      .row .context { margin-top: 4px; }
       header.site { padding-top: 24px; }
+      .modal { padding: 40px 22px 32px; }
     }
   </style>
 </head>
 
 <body>
-  <h1 class="vh">Mercedes Torrendell — writing on AI, language, people</h1>
+  <h1 class="vh">Mercedes Torrendell, writing on AI, language, people</h1>
 
   <div class="wrap">
     <header class="site">
@@ -273,14 +449,14 @@
         <p class="say">&ldquo;AI is stealing our jobs.&rdquo;</p>
         <div class="divider" aria-hidden="true"></div>
         <p class="label">what we mean</p>
-        <p class="mean">The jobs are being redrawn — and we deserve a say in the drawing.</p>
+        <p class="mean">The jobs are being redrawn, and we deserve a say in the drawing.</p>
       </div>
     </section>
 
     <!-- the take -->
     <div class="wrap">
       <p class="take">
-        I interview the people building and living inside AI, and I write about the gap between what the technology is said to do and what it actually does to us. My beat is language — how the words we use about work and machines quietly decide who gets a say. The aim is always the same: trade the loud sentence for the truer one.
+        I interview the people building and living inside AI, and I write about the gap between what the technology is said to do and what it actually does to us. My beat is language: how the words we use about work and machines quietly decide who gets a say. The aim is always the same: trade the loud sentence for the truer one.
       </p>
 
       <!-- published -->
