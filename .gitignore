@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# logs / deps (none expected — static site)
+*.log
+node_modules/
+
+# Vercel
+.vercel

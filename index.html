@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mercedes Torrendell — writing on AI, language, people</title>
+
+  <meta name="description" content="Mercedes Torrendell — writer and interviewer on AI, language, and the people caught between them. Published at The Creative Independent." />
+  <meta name="theme-color" content="#FAF9F5" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Mercedes Torrendell — writing on AI, language, people" />
+  <meta property="og:description" content="Writer and interviewer on AI, language, and the people caught between them. Published at The Creative Independent." />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Mercedes Torrendell — writing on AI, language, people" />
+  <meta name="twitter:description" content="Writer and interviewer on AI, language, and the people caught between them." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --paper:      #FAF9F5;
+      --ink:        #1C1B18;
+      --ink-soft:   #6E6A62;
+      --ink-faint:  #9B968C;
+      --hairline:   #E3DFD5;
+      --halo:       rgba(28, 27, 24, 0.05);
+
+      --serif: "Newsreader", Georgia, "Times New Roman", serif;
+      --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      --mono:  "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+      --space:  8px;
+      --measure: 680px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* Full-page grain — barely there. Remove if it reads as "effect". */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: var(--measure);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    a:focus-visible,
+    .row:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 2px;
+    }
+
+    /* ---------- header ---------- */
+    header.site {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      padding-top: calc(var(--space) * 4);
+      padding-bottom: calc(var(--space) * 2);
+    }
+    .site .name { font-size: 12px; letter-spacing: 0.04em; color: var(--ink); }
+    .site .tag  { font-size: 12px; color: var(--ink-faint); text-align: right; }
+
+    /* ---------- hero ---------- */
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: clamp(72px, 16vw, 140px) 0 clamp(88px, 16vw, 128px);
+      overflow: hidden;
+    }
+    /* the halo — one soft radial, behind hero only */
+    .hero::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 42%;
+      width: 150%;
+      height: 130%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(ellipse at center, var(--halo) 0%, transparent 62%);
+      filter: blur(28px);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .label {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--ink-faint);
+      text-transform: lowercase;
+    }
+
+    .say {
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--ink-soft);
+      max-width: 44ch;
+      margin: 12px auto 0;
+    }
+
+    .divider {
+      width: 1px;
+      height: 40px;
+      background: var(--hairline);
+      margin: 28px auto;
+    }
+
+    .mean {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(28px, 5vw, 44px);
+      line-height: 1.3;
+      color: var(--ink);
+      max-width: 26ch;
+      margin: 14px auto 0;
+      text-wrap: balance;
+    }
+
+    /* signature micro-moment: the translation "arrives" */
+    .mean { opacity: 0; animation: arrive 0.42s ease 0.2s forwards; }
+    @keyframes arrive { to { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) {
+      .mean { opacity: 1; animation: none; }
+    }
+
+    /* ---------- the take ---------- */
+    .take {
+      max-width: 52ch;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 15px;
+      color: var(--ink-soft);
+      padding: clamp(56px, 10vw, 96px) 0;
+    }
+
+    /* ---------- index sections ---------- */
+    section.index { padding-bottom: clamp(56px, 9vw, 96px); }
+
+    .section-title {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 18px;
+      color: var(--ink);
+      margin: 0 0 8px;
+    }
+
+    .row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 0;
+      border-top: 1px solid var(--hairline);
+      color: inherit;
+    }
+    .row:last-child { border-bottom: 1px solid var(--hairline); }
+
+    .row .body { min-width: 0; }
+    .row .title {
+      font-size: 15px;
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-decoration-color: transparent;
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.25s ease;
+    }
+    a.row:hover .title { text-decoration-color: var(--ink); }
+
+    .row .context {
+      font-size: 13px;
+      color: var(--ink-faint);
+      margin-top: 3px;
+    }
+    .row .rtag {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink-faint);
+      white-space: nowrap;
+      flex-shrink: 0;
+      text-align: right;
+    }
+
+    /* placeholder rows read as clearly not-yet-live */
+    .row.pending .title { color: var(--ink-soft); }
+
+    /* ---------- footer ---------- */
+    footer.site {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      border-top: 1px solid var(--hairline);
+      padding: 20px 0 56px;
+      font-size: 12px;
+      color: var(--ink-faint);
+    }
+    footer.site a { color: var(--ink-faint); }
+    footer.site .links { display: flex; gap: 18px; text-align: right; }
+    footer.site a:hover { color: var(--ink); }
+
+    .vh {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0);
+      white-space: nowrap; border: 0;
+    }
+
+    /* ---------- responsive: 360px ---------- */
+    @media (max-width: 480px) {
+      .wrap { padding: 0 20px; }
+      .row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+      }
+      .row .rtag { text-align: left; }
+      header.site { padding-top: 24px; }
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="vh">Mercedes Torrendell — writing on AI, language, people</h1>
+
+  <div class="wrap">
+    <header class="site">
+      <span class="name">mercedes torrendell</span>
+      <span class="tag">writing on ai, language, people</span>
+    </header>
+  </div>
+
+  <main>
+    <!-- hero: the translation pair -->
+    <section class="hero" aria-label="the take, in one line">
+      <div class="wrap">
+        <p class="label">what we say</p>
+        <p class="say">&ldquo;AI is stealing our jobs.&rdquo;</p>
+        <div class="divider" aria-hidden="true"></div>
+        <p class="label">what we mean</p>
+        <p class="mean">The jobs are being redrawn — and we deserve a say in the drawing.</p>
+      </div>
+    </section>
+
+    <!-- the take -->
+    <div class="wrap">
+      <p class="take">
+        I interview the people building and living inside AI, and I write about the gap between what the technology is said to do and what it actually does to us. My beat is language — how the words we use about work and machines quietly decide who gets a say. The aim is always the same: trade the loud sentence for the truer one.
+      </p>
+
+      <!-- published -->
+      <section class="index" aria-labelledby="s-published">
+        <h2 class="section-title" id="s-published">published</h2>
+
+        <a class="row" href="https://thecreativeindependent.com/people/researcher-cesar-fieiras-on-the-complex-influence-of-AI-in-creative-industries/">
+          <span class="body">
+            <span class="title">César Fieiras</span>
+            <span class="context">researcher, on the complex influence of ai in creative industries</span>
+          </span>
+          <span class="rtag">tci</span>
+        </a>
+
+        <a class="row" href="https://thecreativeindependent.com/people/media-artist-and-researcher-roopa-vasudevan-on-creative-resistance-in-the-digital-world/">
+          <span class="body">
+            <span class="title">Roopa Vasudevan</span>
+            <span class="context">media artist, on creative resistance in the digital world</span>
+          </span>
+          <span class="rtag">tci</span>
+        </a>
+
+        <!-- ALL-INTERVIEWS-ROW -->
+        <a class="row" href="https://thecreativeindependent.com/people/mercedes-torrendell/">
+          <span class="body">
+            <span class="title">all interviews →</span>
+            <span class="context">more conversations at the creative independent</span>
+          </span>
+          <span class="rtag">tci</span>
+        </a>
+      </section>
+
+      <!-- essays -->
+      <section class="index" aria-labelledby="s-essays">
+        <h2 class="section-title" id="s-essays">essays</h2>
+
+        <div class="row pending">
+          <span class="body">
+            <span class="title">Lost in translation</span>
+            <span class="context">essay in progress — on ai, language, and precision</span>
+          </span>
+          <span class="rtag">substack · soon</span>
+        </div>
+
+        <div class="row pending">
+          <span class="body">
+            <span class="title">We Are Not Being Given the Words</span>
+            <span class="context">essay — link coming</span>
+          </span>
+          <span class="rtag">substack</span>
+        </div>
+      </section>
+
+      <!-- in progress -->
+      <section class="index" aria-labelledby="s-progress">
+        <h2 class="section-title" id="s-progress">in progress</h2>
+
+        <div class="row pending">
+          <span class="body">
+            <span class="title">Valerie Fuchs</span>
+            <span class="context">interview</span>
+          </span>
+          <span class="rtag">forthcoming</span>
+        </div>
+
+        <div class="row pending">
+          <span class="body">
+            <span class="title">SOFTER Global</span>
+            <span class="context">newsletter</span>
+          </span>
+          <span class="rtag">preview</span>
+        </div>
+
+        <div class="row pending">
+          <span class="body">
+            <span class="title">the narrative-gap essay</span>
+            <span class="context">essay</span>
+          </span>
+          <span class="rtag">in development</span>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="wrap">
+    <footer class="site">
+      <span>berlin · es / en</span>
+      <span class="links">
+        <a href="mailto:mercedestorrendell@gmail.com">contact ↗</a>
+        <a href="https://www.linkedin.com/in/mercedes-torrendell-748826236/" target="_blank" rel="noopener">linkedin ↗</a>
+      </span>
+    </footer>
+  </div>
+</body>
+</html>
