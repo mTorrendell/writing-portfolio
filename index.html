@@ -505,18 +505,40 @@
         <div class="row pending">
           <span class="body">
             <span class="title">Lost in translation</span>
-            <span class="context">essay in progress — on ai, language, and precision</span>
+            <span class="context">essay in progress, on ai, language, and precision</span>
           </span>
           <span class="rtag">substack · soon</span>
         </div>
 
-        <div class="row pending">
+        <a class="row" href="https://tspiral.substack.com/p/we-are-not-being-given-the-words">
           <span class="body">
-            <span class="title">We Are Not Being Given the Words</span>
-            <span class="context">essay — link coming</span>
+            <span class="title">We Are Not Being Given the Words to Want Differently</span>
+            <span class="context">a glossary essay</span>
           </span>
           <span class="rtag">substack</span>
+        </a>
+
+        <div class="row pending">
+          <span class="body">
+            <span class="title">the narrative-gap essay</span>
+            <span class="context">essay</span>
+          </span>
+          <span class="rtag">in development</span>
         </div>
+      </section>
+
+      <!-- source texts -->
+      <section class="index" aria-labelledby="s-source">
+        <h2 class="section-title" id="s-source">source texts</h2>
+        <p class="section-note">what I'm reading and translating from, a running cache.</p>
+
+        <a class="row" href="https://europe2031.ai/">
+          <span class="body">
+            <span class="title">Europe 2031</span>
+            <span class="context">A speculative history of how Europe fell behind on AI, and the missing positive vision underneath it. Reference point for the narrative-gap essay.</span>
+          </span>
+          <span class="rtag">reference</span>
+        </a>
       </section>
 
       <!-- in progress -->
@@ -531,21 +553,23 @@
           <span class="rtag">forthcoming</span>
         </div>
 
-        <div class="row pending">
+        <div class="qpreview">
+          <p class="qlabel">three questions from the conversation</p>
+          <ol>
+            <li>&ldquo;If AI collapses hours of struggle into one prompt, and people ask the model their &lsquo;dumb&rsquo; questions instead of each other, what happens to the people who need to see someone else struggle to feel okay about their own?&rdquo;</li>
+            <li>&ldquo;You asked ChatGPT what a girl could be versus what a boy could be. What made you want to poke at that, and what came out of it?&rdquo;</li>
+            <li>&ldquo;Developers&rsquo; sense of their own value is being shaken by AI, but nobody&rsquo;s really talking about it. Why does it stay unspoken?&rdquo;</li>
+          </ol>
+          <p class="qclose">goes live soon on The Creative Independent</p>
+        </div>
+
+        <button type="button" class="row" id="softer-trigger" aria-haspopup="dialog" aria-expanded="false">
           <span class="body">
             <span class="title">SOFTER Global</span>
             <span class="context">newsletter</span>
           </span>
-          <span class="rtag">preview</span>
-        </div>
-
-        <div class="row pending">
-          <span class="body">
-            <span class="title">the narrative-gap essay</span>
-            <span class="context">essay</span>
-          </span>
-          <span class="rtag">in development</span>
-        </div>
+          <span class="rtag">preview ↗</span>
+        </button>
       </section>
     </div>
   </main>
@@ -559,5 +583,80 @@
       </span>
     </footer>
   </div>
+
+  <!-- SOFTER Global preview modal -->
+  <div class="modal-backdrop" id="softer-modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="softer-title">
+      <button type="button" class="modal-close" aria-label="close preview">&times;</button>
+
+      <p class="m-masthead" id="softer-title">SOFTER GLOBAL</p>
+      <p class="m-sub">a newsletter about technology being used softly, for people, on purpose</p>
+      <p class="m-legend">hardware is what you can touch · software is what lives on screens · worldware is how people think about tech&rsquo;s place in the world</p>
+
+      <div class="m-story">
+        <p class="m-tag">software</p>
+        <p class="m-title">Farmer.Chat</p>
+        <p class="m-body">Free AI assistant for smallholder farmers: send a voice note in your own language, no typing, no English required, and it answers. Over five million questions answered from 830,000+ farmers across Kenya, Nigeria, Ethiopia, India and Brazil. &ldquo;This is the other story about AI. Not the hype: a voice note, answered.&rdquo;</p>
+      </div>
+
+      <div class="m-story">
+        <p class="m-tag">software</p>
+        <p class="m-title">PROMPTS</p>
+        <p class="m-body">In Kenya, a third of maternal deaths trace back to not knowing when or where to seek care. PROMPTS closes the gap with the humblest technology imaginable, a text message: 3.8 million mothers reached, 10,000 questions a day, an AI helpdesk that triggers fast hospital referrals.</p>
+      </div>
+
+      <div class="m-story">
+        <p class="m-tag">worldware</p>
+        <p class="m-title">Karen Hao</p>
+        <p class="m-body">A trained engineer turned journalist, the first reporter ever embedded inside OpenAI, whose book Empire of AI maps who supplies, who profits, who pays. And crucially, she leaves room for hope: she&rsquo;s trained nearly 3,000 journalists in seven languages to cover AI with rigor.</p>
+      </div>
+
+      <p class="m-foot">recommended: Wayfinder · p5.js · Naive Weekly · Association for Progressive Communications</p>
+      <p class="m-close-line">first issue in the works</p>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var trigger = document.getElementById('softer-trigger');
+      var modal   = document.getElementById('softer-modal');
+      if (!trigger || !modal) return;
+      var dialog   = modal.querySelector('.modal');
+      var closeBtn = modal.querySelector('.modal-close');
+      var lastFocus = null;
+
+      function focusables() {
+        return dialog.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])');
+      }
+      function onKey(e) {
+        if (e.key === 'Escape') { close(); return; }
+        if (e.key === 'Tab') {
+          var f = focusables();
+          if (!f.length) return;
+          var first = f[0], last = f[f.length - 1];
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      }
+      function open() {
+        lastFocus = document.activeElement;
+        modal.hidden = false;
+        document.body.classList.add('no-scroll');
+        trigger.setAttribute('aria-expanded', 'true');
+        closeBtn.focus();
+        document.addEventListener('keydown', onKey);
+      }
+      function close() {
+        modal.hidden = true;
+        document.body.classList.remove('no-scroll');
+        trigger.setAttribute('aria-expanded', 'false');
+        document.removeEventListener('keydown', onKey);
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+      trigger.addEventListener('click', open);
+      closeBtn.addEventListener('click', close);
+      modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
+    })();
+  </script>
 </body>
 </html>
