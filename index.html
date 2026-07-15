@@ -200,6 +200,34 @@
       margin: 0 0 16px;
     }
 
+    /* what I want to write next: idea blocks */
+    .idea {
+      border-top: 1px solid var(--hairline);
+      padding: 18px 0;
+    }
+    .idea:last-of-type { border-bottom: 1px solid var(--hairline); }
+    .idea-title {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.35;
+      color: var(--ink);
+      margin: 0;
+    }
+    .idea-body {
+      font-size: 14px;
+      color: var(--ink-soft);
+      max-width: 52ch;
+      line-height: 1.5;
+      margin: 8px 0 0;
+    }
+    .idea-source {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink-faint);
+      margin: 10px 0 0;
+    }
+
     .row {
       display: flex;
       align-items: baseline;
@@ -453,7 +481,6 @@
       <!-- published -->
       <section class="index" aria-labelledby="s-interviews">
         <h2 class="section-title" id="s-interviews">interviews</h2>
-        <p class="section-intro">An ongoing interview series for The Creative Independent about how creative people actually relate to technology. The direction: away from hot takes, toward the people living the shift, artists, researchers, historians, developers, and increasingly the voices inside big institutions where AI is quietly changing the work. The question underneath every conversation is the same: what does this technology do to the way you make things, and who gets a say in that?</p>
 
         <a class="row" href="https://thecreativeindependent.com/people/researcher-cesar-fieiras-on-the-complex-influence-of-AI-in-creative-industries/" target="_blank" rel="noopener noreferrer">
           <span class="body">
@@ -501,14 +528,6 @@
       <section class="index" aria-labelledby="s-essays">
         <h2 class="section-title" id="s-essays">essays</h2>
 
-        <div class="row pending">
-          <span class="body">
-            <span class="title">Lost in translation</span>
-            <span class="context">essay in progress, on ai, language, and precision</span>
-          </span>
-          <span class="rtag">substack · soon</span>
-        </div>
-
         <a class="row" href="https://tspiral.substack.com/p/we-are-not-being-given-the-words" target="_blank" rel="noopener noreferrer">
           <span class="body">
             <span class="title">We Are Not Being Given the Words to Want Differently</span>
@@ -519,10 +538,34 @@
 
         <div class="row pending">
           <span class="body">
-            <span class="title">the narrative-gap essay</span>
-            <span class="context">essay</span>
+            <span class="title">The Theta Problem</span>
+            <span class="context">An essay on how the symbols and words we inherit decide which thoughts we can even have. The philosophical side of the same obsession: language sets the walls of the room you think inside.</span>
           </span>
-          <span class="rtag">in development</span>
+          <span class="rtag">substack · link coming</span>
+        </div>
+      </section>
+
+      <!-- what I want to write next -->
+      <section class="index" aria-labelledby="s-next">
+        <h2 class="section-title" id="s-next">what I want to write next</h2>
+        <p class="section-note">Ideas I'm carrying around, with the reading that sparked them.</p>
+
+        <div class="idea">
+          <p class="idea-title">Our 24 languages are not a weakness. They're a shield.</p>
+          <p class="idea-body">Everyone treats Europe's languages as a problem. But they're one reason foreign software can't just walk in and take everything. One European company already proved that a language, done with care, can win against the giants. I want to write that story in the simplest words possible.</p>
+          <p class="idea-source">reading: Headline's AI Europe 100 (2026) · Europe 2031</p>
+        </div>
+
+        <div class="idea">
+          <p class="idea-title">The words deciding your future that nobody explained to you.</p>
+          <p class="idea-body">Sovereignty. Compute. Chokepoint. These words are shaping your life right now, and the people who understand them are only talking to each other. I want to keep building the glossary for everyone else. You can't want something you have no words for.</p>
+          <p class="idea-source">reading: Europe 2031 · my own glossary essay, where this started</p>
+        </div>
+
+        <div class="idea">
+          <p class="idea-title">When AI arrives at your work, who explains it to you, and in what words?</p>
+          <p class="idea-body">The first factories, farms and hospitals run with AI are already here. Everyone writes about the machines. I want to interview the people: what they were told, what they weren't, and how it felt. The same conversations I already have with artists and developers, taken to more places.</p>
+          <p class="idea-source">reading: Fortune on industrial AI (March 2026) · my interviews for The Creative Independent</p>
         </div>
       </section>
 
@@ -533,7 +576,7 @@
         <button type="button" class="row" data-modal="softer-modal" aria-haspopup="dialog" aria-expanded="false">
           <span class="body">
             <span class="title">SOFTER Global</span>
-            <span class="context">An editorial collaboration I'm part of right now: a newsletter hunting for the social side of tech and AI, and the people talking about it in a specific way. I'm helping shape the news sections.</span>
+            <span class="context">SOFTER Global is a new editorial project about the social side of tech and AI. I'm building their newsletter from the ground up and leading the communication side while we get it ready to launch: the sections, the stories, the voice.</span>
           </span>
           <span class="rtag">collaboration · in the works · preview ↗</span>
         </button>
@@ -607,18 +650,18 @@
       <p class="m-sub">From a conversation for The Creative Independent. Full interview coming soon.</p>
 
       <div class="m-quoteblock">
-        <p class="m-quote">&ldquo;You don&rsquo;t need to be on top of the ladder to help someone else up. You can just be on the first step.&rdquo;</p>
-        <p class="m-qlabel">on teaching while still learning</p>
+        <p class="m-quote">&ldquo;Parts went extremely fast and made me think, wow, this is possible, I can do in half a day what would have taken me a week or two. Amazing.&rdquo;</p>
+        <p class="m-qlabel">on her first real experiments building with AI</p>
       </div>
 
       <div class="m-quoteblock">
-        <p class="m-quote">&ldquo;We almost end up in an echo chamber of imposter syndrome, because we just stay in our own bubble and talk to the LLM. There&rsquo;s no validation of your problem, or of your feelings.&rdquo;</p>
-        <p class="m-qlabel">on what gets lost when we ask the model instead of each other</p>
+        <p class="m-quote">&ldquo;I want to get people to the table who aren&rsquo;t there yet. I want to appeal to people who aren&rsquo;t technical, who aren&rsquo;t writing code, who feel like the field isn&rsquo;t for them, because we need them, we need everyone.&rdquo;</p>
+        <p class="m-qlabel">on why she teaches the way she does</p>
       </div>
 
       <div class="m-quoteblock">
-        <p class="m-quote">&ldquo;I don&rsquo;t want a tool to take over the part I enjoy most, the part that gets me thinking freely. That&rsquo;s what I want to own and apply every day, because it&rsquo;s one of the best reasons to be alive.&rdquo;</p>
-        <p class="m-qlabel">on keeping AI out of her own creative practice</p>
+        <p class="m-quote">&ldquo;I see technology as a means to solve a problem, and for me, creativity is thinking about how to solve a problem. So we&rsquo;ll always need people who think creatively.&rdquo;</p>
+        <p class="m-qlabel">on why creative people matter to tech</p>
       </div>
 
       <p class="m-close-line">goes live soon on The Creative Independent</p>
