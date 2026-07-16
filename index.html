@@ -371,6 +371,14 @@
       color: var(--ink);
       margin: 0;
     }
+    .m-masthead a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: transparent;
+      text-underline-offset: 4px;
+      transition: text-decoration-color 0.25s ease;
+    }
+    .m-masthead a:hover { text-decoration-color: var(--ink); }
     .m-sub {
       font-size: 14px;
       color: var(--ink-soft);
@@ -492,6 +500,7 @@
       <!-- interviews -->
       <section class="index" aria-labelledby="s-interviews">
         <h2 class="section-title" id="s-interviews">interviews</h2>
+        <p class="section-intro">I interview creative people about technology for The Creative Independent. It's where I bring the AI conversation: to the art community, the people who feel technology's impact first and say it best.</p>
 
         <a class="row" href="https://thecreativeindependent.com/people/researcher-cesar-fieiras-on-the-complex-influence-of-AI-in-creative-industries/" target="_blank" rel="noopener noreferrer">
           <span class="body">
@@ -509,15 +518,6 @@
           <span class="rtag">tci</span>
         </a>
 
-        <!-- ALL-INTERVIEWS-ROW -->
-        <a class="row" href="https://thecreativeindependent.com/people/mercedes-torrendell/" target="_blank" rel="noopener noreferrer">
-          <span class="body">
-            <span class="title">all interviews →</span>
-            <span class="context">more conversations at the creative independent</span>
-          </span>
-          <span class="rtag">tci</span>
-        </a>
-
         <button type="button" class="row" data-modal="valerie-modal" aria-haspopup="dialog" aria-expanded="false">
           <span class="body">
             <span class="title">Valerie Fuchs, developer and creative-coding teacher</span>
@@ -529,10 +529,19 @@
         <div class="row pending">
           <span class="body">
             <span class="title">Lois Rosson, historian at NASA</span>
-            <span class="context">Rosson works in the NASA History Office writing the history of exoplanet research, and her book project traces how artists and illustrators invented what outer space looks like. We talk about who decides what discovery looks like, now that AI models like NASA's ExoMiner help find the planets humans then have to picture.</span>
+            <span class="context">Historian at NASA, writing how we decided what outer space looks like.</span>
           </span>
           <span class="rtag">upcoming</span>
         </div>
+
+        <!-- ALL-INTERVIEWS-ROW -->
+        <a class="row" href="https://thecreativeindependent.com/people/mercedes-torrendell/" target="_blank" rel="noopener noreferrer">
+          <span class="body">
+            <span class="title">all interviews →</span>
+            <span class="context">more conversations at the creative independent</span>
+          </span>
+          <span class="rtag">tci</span>
+        </a>
       </section>
 
       <!-- essays -->
@@ -646,7 +655,7 @@
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="valerie-title">
       <button type="button" class="modal-close" aria-label="close preview">&times;</button>
 
-      <p class="m-masthead" id="valerie-title">VALERIE FUCHS</p>
+      <p class="m-masthead" id="valerie-title"><a href="https://valerie-fuchs.com/" target="_blank" rel="noopener noreferrer">VALERIE FUCHS</a></p>
       <p class="m-sub">From a conversation for The Creative Independent. Full interview coming soon.</p>
 
       <div class="m-quoteblock">
