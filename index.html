@@ -183,7 +183,8 @@
       display: flex;
       flex-direction: column;
     }
-    .fs-header { flex: 0 0 auto; }
+    .fs-header { flex: 0 0 auto; width: 100%; }
+    .fs-header .site { justify-content: space-between; width: 100%; }
     .firstscreen .hero {
       flex: 1 1 auto;
       display: flex;
@@ -194,6 +195,7 @@
     }
     .fs-take {
       flex: 0 0 auto;
+      width: 100%;
       padding-bottom: clamp(40px, 9vh, 96px);
     }
     .fs-take .take { padding: 0; }
@@ -642,7 +644,7 @@
       }
       .row .rtag { text-align: left; }
       .row .context { margin-top: 4px; }
-      header.site { padding-top: 24px; }
+      header.site { padding-top: 24px; flex-wrap: wrap; }
       .modal { padding: 40px 22px 32px; }
       .d-voices { grid-template-columns: 1fr; }
       .d-slots { grid-template-columns: 1fr; }
