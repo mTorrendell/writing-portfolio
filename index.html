@@ -81,6 +81,8 @@
 
     a:focus-visible,
     .row:focus-visible,
+    .idea-trigger:focus-visible,
+    .tag-trigger:focus-visible,
     .modal-close:focus-visible {
       outline: 2px solid var(--ink);
       outline-offset: 2px;
@@ -236,6 +238,28 @@
       color: var(--ink-faint);
       margin: 10px 0 0;
     }
+    /* inline text-button trigger (idea pitches, tags) */
+    .idea-trigger,
+    .tag-trigger {
+      -webkit-appearance: none;
+      appearance: none;
+      background: none;
+      border: 0;
+      padding: 0;
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink-faint);
+      cursor: pointer;
+      text-decoration: underline;
+      text-decoration-color: transparent;
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.25s ease;
+    }
+    .idea-trigger { margin: 12px 0 0; }
+    .tag-trigger { margin: 4px 0 0; }
+    .idea-trigger:hover,
+    .tag-trigger:hover { color: var(--ink); text-decoration-color: var(--ink); }
 
     .row {
       display: flex;
@@ -451,6 +475,69 @@
       margin: 8px 0 0;
     }
 
+    /* ---------- debate modal ---------- */
+    .d-format { margin-top: 16px; }
+    .d-line {
+      font-size: 13px;
+      color: var(--ink-soft);
+      line-height: 1.5;
+      margin: 6px 0 0;
+    }
+    .d-format .d-line:first-child { margin-top: 0; }
+    .d-rule {
+      border-top: 1px solid var(--hairline);
+      margin: 22px 0;
+    }
+    .d-topic {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(18px, 4vw, 20px);
+      line-height: 1.35;
+      color: var(--ink);
+      text-align: center;
+      margin: 0;
+    }
+    .d-voices {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .d-name { font-weight: 500; font-size: 14px; color: var(--ink); margin: 0; }
+    .d-who { font-size: 12px; color: var(--ink-soft); line-height: 1.5; margin: 6px 0 0; }
+    .d-honest {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink-faint);
+      text-align: center;
+      margin: 14px 0 0;
+    }
+    .d-q {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.4;
+      margin: 20px 0 0;
+    }
+    .d-slots {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 12px;
+    }
+    .d-col { padding: 0 14px; }
+    .d-col:first-child { padding-left: 0; }
+    .d-col + .d-col { border-left: 1px solid var(--hairline); }
+    .d-name-sm {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink-faint);
+      margin: 0 0 10px;
+    }
+    .d-bar { height: 6px; background: var(--hairline); margin: 8px 0; }
+    .d-bar.w1 { width: 100%; }
+    .d-bar.w2 { width: 88%; }
+    .d-bar.w3 { width: 56%; }
+
     /* ---------- responsive: 360px ---------- */
     @media (max-width: 480px) {
       .wrap { padding: 0 20px; }
@@ -463,6 +550,11 @@
       .row .context { margin-top: 4px; }
       header.site { padding-top: 24px; }
       .modal { padding: 40px 22px 32px; }
+      .d-voices { grid-template-columns: 1fr; }
+      .d-slots { grid-template-columns: 1fr; }
+      .d-col { padding: 0; }
+      .d-col:first-child { padding-bottom: 14px; }
+      .d-col + .d-col { border-left: 0; border-top: 1px solid var(--hairline); padding-top: 14px; }
     }
   </style>
 </head>
@@ -578,24 +670,23 @@
       <!-- what I want to write next -->
       <section class="index" aria-labelledby="s-next">
         <h2 class="section-title" id="s-next">what I want to write next</h2>
-        <p class="section-note">Ideas I'm carrying around, with the reading that sparked them.</p>
+        <p class="section-note">Three pieces I want to make. Each one is a concept and a format at the same time.</p>
 
         <div class="idea">
-          <p class="idea-title">Our 24 languages are not a weakness. They're a shield.</p>
-          <p class="idea-body">Everyone treats Europe's languages as a problem. But they're one reason foreign software can't just walk in and take everything. One European company already proved that a language, done with care, can win against the giants. I want to write that story in the simplest words possible.</p>
-          <p class="idea-source">reading: Headline's AI Europe 100 (2026) · Europe 2031</p>
+          <p class="idea-title">The essay: our 24 languages are a shield.</p>
+          <p class="idea-body">Everyone treats Europe's 24 languages as a problem. I think they're a shield: one reason foreign software can't just walk in and take everything. Brussels quietly agrees, there's a European project building open AI models for all 24 of them right now. The idea came to me reading about why global companies struggle here. I want to tell it in the simplest words possible.</p>
+          <p class="idea-source">reading: OpenEuroLLM · Headline's AI Europe 100 · Europe 2031</p>
         </div>
 
         <div class="idea">
-          <p class="idea-title">The words deciding your future that nobody explained to you.</p>
-          <p class="idea-body">Sovereignty. Compute. Chokepoint. These words are shaping your life right now, and the people who understand them are only talking to each other. I want to keep building the glossary for everyone else. You can't want something you have no words for.</p>
-          <p class="idea-source">reading: Europe 2031 · my own glossary essay, where this started</p>
+          <p class="idea-title">The debate: one question, two Europes, plain words.</p>
+          <p class="idea-body">One question everyone is already arguing about. Two European voices from very different corners answer it side by side, in short plain turns. I translate the jargon on the way in, and point out where they secretly agree on the way out.</p>
+          <button type="button" class="idea-trigger" data-modal="debate-modal" aria-haspopup="dialog" aria-expanded="false">preview ↗</button>
         </div>
 
         <div class="idea">
-          <p class="idea-title">When AI arrives at your work, who explains it to you, and in what words?</p>
-          <p class="idea-body">The first factories, farms and hospitals run with AI are already here. Everyone writes about the machines. I want to interview the people: what they were told, what they weren't, and how it felt. The same conversations I already have with artists and developers, taken to more places.</p>
-          <p class="idea-source">reading: Fortune on industrial AI (March 2026) · my interviews for The Creative Independent</p>
+          <p class="idea-title">The reflective interview: one conversation, one essay.</p>
+          <p class="idea-body">One long conversation with one person. Recorded, transcribed, then written into an essay that thinks around their best sentences: part profile, part reflection. The same muscle as my interviews, with my voice walking between the quotes.</p>
         </div>
       </section>
 
@@ -682,6 +773,87 @@
       </div>
 
       <p class="m-close-line">goes live soon on The Creative Independent</p>
+    </div>
+  </div>
+
+  <!-- The Debate format preview modal -->
+  <div class="modal-backdrop" id="debate-modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="debate-title">
+      <button type="button" class="modal-close" aria-label="close preview">&times;</button>
+
+      <p class="m-masthead" id="debate-title">A DEBATE IN PLAIN WORDS</p>
+
+      <div class="d-format">
+        <p class="d-line">One question. Two voices from very different corners.</p>
+        <p class="d-line">Short answers, plain words. That's a rule, not a suggestion.</p>
+        <p class="d-line">Before each round, the jargon gets translated.</p>
+        <p class="d-line">Between rounds, two lines on what was actually just said.</p>
+        <p class="d-line">It ends not with a winner, but with the overlap.</p>
+      </div>
+
+      <div class="d-rule"></div>
+
+      <p class="d-topic">Will AI save Europe's small languages, or flatten them?</p>
+
+      <div class="d-voices">
+        <div class="d-voice">
+          <p class="d-name">Mati Staniszewski</p>
+          <p class="d-who">Co-founder of ElevenLabs. Voice AI in more than 30 languages. Building fast, building commercial.</p>
+        </div>
+        <div class="d-voice">
+          <p class="d-name">Jan Hajič</p>
+          <p class="d-who">Computational linguist, Charles University. Coordinates OpenEuroLLM, open AI models for all 24 EU languages. Building slow, building public.</p>
+        </div>
+      </div>
+      <p class="d-honest">the table I would try to set</p>
+
+      <div class="d-rule"></div>
+
+      <p class="m-tag">the rounds</p>
+
+      <div class="d-round">
+        <p class="d-q">What does a language lose when a machine speaks it fluently?</p>
+        <div class="d-slots">
+          <div class="d-col">
+            <p class="d-name-sm">Mati</p>
+            <div class="d-bar w1"></div><div class="d-bar w2"></div><div class="d-bar w3"></div>
+          </div>
+          <div class="d-col">
+            <p class="d-name-sm">Jan</p>
+            <div class="d-bar w1"></div><div class="d-bar w2"></div><div class="d-bar w3"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-round">
+        <p class="d-q">Open or fast: which serves a small language better?</p>
+        <div class="d-slots">
+          <div class="d-col">
+            <p class="d-name-sm">Mati</p>
+            <div class="d-bar w1"></div><div class="d-bar w2"></div><div class="d-bar w3"></div>
+          </div>
+          <div class="d-col">
+            <p class="d-name-sm">Jan</p>
+            <div class="d-bar w1"></div><div class="d-bar w2"></div><div class="d-bar w3"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-round">
+        <p class="d-q">Would your product exist if Europe had one language?</p>
+        <div class="d-slots">
+          <div class="d-col">
+            <p class="d-name-sm">Mati</p>
+            <div class="d-bar w1"></div><div class="d-bar w2"></div><div class="d-bar w3"></div>
+          </div>
+          <div class="d-col">
+            <p class="d-name-sm">Jan</p>
+            <div class="d-bar w1"></div><div class="d-bar w2"></div><div class="d-bar w3"></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="m-close-line">format pitch · no debate has been recorded yet</p>
     </div>
   </div>
 
