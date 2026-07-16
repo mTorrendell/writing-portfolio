@@ -229,6 +229,14 @@
       color: var(--ink-soft);
       margin: 0 0 22px;
     }
+    .section-intro a {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+      text-decoration-color: var(--hairline);
+      transition: text-decoration-color 0.15s ease;
+    }
+    .section-intro a:hover { text-decoration-color: var(--ink-soft); }
     /* short one-line section note */
     .section-note {
       font-size: 13px;
@@ -666,7 +674,7 @@
       <!-- interviews -->
       <section class="index" aria-labelledby="s-interviews">
         <h2 class="section-title" id="s-interviews">interviews</h2>
-        <p class="section-intro">I interview creative people about technology for The Creative Independent. It's where I bring the AI conversation: to the art community, the people who feel technology's impact first and say it best.</p>
+        <p class="section-intro">I interview creative people about technology for <a href="https://thecreativeindependent.com/welcome/" target="_blank" rel="noopener noreferrer">The Creative Independent</a>. It's where I bring the AI conversation: to the art community, a perspective mostly missing from how tech gets told. One question at a time, to keep it digestible.</p>
 
         <a class="row" href="https://thecreativeindependent.com/people/researcher-cesar-fieiras-on-the-complex-influence-of-AI-in-creative-industries/" target="_blank" rel="noopener noreferrer">
           <span class="body">
