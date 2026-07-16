@@ -176,6 +176,38 @@
       padding: clamp(56px, 10vw, 96px) 0;
     }
 
+    /* first screen: header + translation pair + take fill exactly one viewport */
+    .firstscreen {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+    }
+    .fs-header { flex: 0 0 auto; }
+    .firstscreen .hero {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+    .fs-take {
+      flex: 0 0 auto;
+      padding-bottom: clamp(40px, 9vh, 96px);
+    }
+    .fs-take .take { padding: 0; }
+
+    /* short viewports (small laptops, landscape phones): keep all three in one screen */
+    @media (max-height: 720px) {
+      .mean { font-size: clamp(19px, 2.6vw, 24px); }
+      .firstscreen .hero { padding-top: 8px; padding-bottom: 8px; }
+      .fs-take { padding-bottom: clamp(20px, 5vh, 44px); }
+      .fs-take .take { font-size: 14px; }
+      .say { margin-top: 8px; }
+      .divider { height: 22px; margin: 14px auto; }
+    }
+
     /* ---------- index sections ---------- */
     section.index { padding-bottom: clamp(56px, 9vw, 96px); }
 
@@ -600,14 +632,14 @@
 <body>
   <h1 class="vh">Mercedes Torrendell, writing on AI, language, people</h1>
 
-  <div class="wrap">
-    <header class="site">
-      <span class="name">mercedes torrendell</span>
-      <span class="tag">writing on ai, language, people</span>
-    </header>
-  </div>
+  <div class="firstscreen">
+    <div class="wrap fs-header">
+      <header class="site">
+        <span class="name">mercedes torrendell</span>
+        <span class="tag">writing on ai, language, people</span>
+      </header>
+    </div>
 
-  <main>
     <!-- hero: the translation pair -->
     <section class="hero" aria-label="the take, in one line">
       <div class="wrap">
@@ -620,11 +652,15 @@
     </section>
 
     <!-- the take -->
-    <div class="wrap">
+    <div class="wrap fs-take">
       <p class="take">
         This page is a small map of what I am working toward: the full picture, as many sides of the story as I can sit down with, from the people building the technology to the people living with it. Then the part I care about most, the translation. Brief, human, to the point. Not there yet. Getting there.
       </p>
+    </div>
+  </div>
 
+  <main>
+    <div class="wrap">
       <p class="kicker">what I've done</p>
 
       <!-- interviews -->
