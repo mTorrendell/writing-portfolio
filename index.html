@@ -162,6 +162,8 @@
     @keyframes arrive { to { opacity: 1; } }
     @media (prefers-reduced-motion: reduce) {
       .mean { opacity: 1; animation: none; }
+      a, .row .title, .idea-trigger, .tag-trigger, .prev,
+      .m-masthead a, footer.site a { transition: none; }
     }
 
     /* ---------- the take ---------- */
@@ -249,17 +251,18 @@
       display: inline-block;
       font-family: var(--mono);
       font-size: 12px;
-      color: var(--ink-faint);
+      color: var(--ink);
       cursor: pointer;
       text-decoration: underline;
-      text-decoration-color: transparent;
+      text-decoration-thickness: 1px;
+      text-decoration-color: var(--ink-faint);
       text-underline-offset: 3px;
-      transition: text-decoration-color 0.25s ease;
+      transition: text-decoration-color 0.15s ease;
     }
     .idea-trigger { margin: 12px 0 0; }
     .tag-trigger { margin: 4px 0 0; }
     .idea-trigger:hover,
-    .tag-trigger:hover { color: var(--ink); text-decoration-color: var(--ink); }
+    .tag-trigger:hover { text-decoration-color: var(--ink); }
 
     .row {
       display: flex;
@@ -296,9 +299,25 @@
       text-underline-offset: 3px;
       transition: text-decoration-color 0.25s ease;
     }
+    /* clickable affordance: link + trigger titles underlined at rest, darken on hover (150ms) */
+    a.row .title,
+    button.row .title,
+    .row a.title {
+      text-decoration-color: var(--ink-faint);
+      transition: text-decoration-color 0.15s ease;
+    }
+    .prev {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--ink-faint);
+      transition: text-decoration-color 0.15s ease;
+    }
     a.row:hover .title,
     button.row:hover .title,
-    a.title:hover { text-decoration-color: var(--ink); }
+    .row a.title:hover,
+    button.row:hover .prev { text-decoration-color: var(--ink); }
 
     .row .context {
       display: block;
@@ -330,9 +349,16 @@
       font-size: 11px;
       color: var(--ink-faint);
     }
-    footer.site a { color: var(--ink-faint); }
+    footer.site a {
+      color: var(--ink-faint);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--ink-faint);
+      transition: text-decoration-color 0.15s ease;
+    }
     footer.site .links { display: flex; gap: 18px; text-align: right; }
-    footer.site a:hover { color: var(--ink); }
+    footer.site a:hover { text-decoration-color: var(--ink); }
 
     .vh {
       position: absolute;
@@ -399,9 +425,10 @@
     .m-masthead a {
       color: inherit;
       text-decoration: underline;
-      text-decoration-color: transparent;
+      text-decoration-thickness: 1px;
+      text-decoration-color: var(--ink-faint);
       text-underline-offset: 4px;
-      transition: text-decoration-color 0.25s ease;
+      transition: text-decoration-color 0.15s ease;
     }
     .m-masthead a:hover { text-decoration-color: var(--ink); }
     .m-sub {
@@ -616,7 +643,7 @@
             <span class="title">Valerie Fuchs, developer and creative-coding teacher</span>
             <span class="context">On what happens to visible struggle, imposter syndrome, and the joy of ideas when AI does the hard part.</span>
           </span>
-          <span class="rtag">in drafts · preview ↗</span>
+          <span class="rtag">in drafts · <span class="prev">preview ↗</span></span>
         </button>
 
         <div class="row pending">
