@@ -254,15 +254,15 @@
       color: var(--ink);
       cursor: pointer;
       text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-decoration-color: var(--ink-faint);
-      text-underline-offset: 3px;
+      text-decoration-thickness: 0.5px;
+      text-decoration-color: var(--hairline);
+      text-underline-offset: 4px;
       transition: text-decoration-color 0.15s ease;
     }
     .idea-trigger { margin: 12px 0 0; }
     .tag-trigger { margin: 4px 0 0; }
     .idea-trigger:hover,
-    .tag-trigger:hover { text-decoration-color: var(--ink); }
+    .tag-trigger:hover { text-decoration-color: var(--ink-soft); }
 
     .row {
       display: flex;
@@ -294,30 +294,30 @@
       font-size: 15px;
       color: var(--ink);
       text-decoration: underline;
-      text-decoration-thickness: 1px;
+      text-decoration-thickness: 0.5px;
       text-decoration-color: transparent;
-      text-underline-offset: 3px;
-      transition: text-decoration-color 0.25s ease;
+      text-underline-offset: 4px;
+      transition: text-decoration-color 0.15s ease;
     }
-    /* clickable affordance: link + trigger titles underlined at rest, darken on hover (150ms) */
+    /* clickable affordance: link + trigger titles softly underlined at rest, darken on hover (150ms) */
     a.row .title,
     button.row .title,
     .row a.title {
-      text-decoration-color: var(--ink-faint);
+      text-decoration-color: var(--hairline);
       transition: text-decoration-color 0.15s ease;
     }
     .prev {
       color: var(--ink);
       text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-      text-decoration-color: var(--ink-faint);
+      text-decoration-thickness: 0.5px;
+      text-underline-offset: 4px;
+      text-decoration-color: var(--hairline);
       transition: text-decoration-color 0.15s ease;
     }
     a.row:hover .title,
     button.row:hover .title,
     .row a.title:hover,
-    button.row:hover .prev { text-decoration-color: var(--ink); }
+    button.row:hover .prev { text-decoration-color: var(--ink-soft); }
 
     .row .context {
       display: block;
@@ -352,13 +352,13 @@
     footer.site a {
       color: var(--ink-faint);
       text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-      text-decoration-color: var(--ink-faint);
+      text-decoration-thickness: 0.5px;
+      text-underline-offset: 4px;
+      text-decoration-color: var(--hairline);
       transition: text-decoration-color 0.15s ease;
     }
     footer.site .links { display: flex; gap: 18px; text-align: right; }
-    footer.site a:hover { text-decoration-color: var(--ink); }
+    footer.site a:hover { text-decoration-color: var(--ink-soft); }
 
     .vh {
       position: absolute;
@@ -425,12 +425,12 @@
     .m-masthead a {
       color: inherit;
       text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-decoration-color: var(--ink-faint);
+      text-decoration-thickness: 0.5px;
+      text-decoration-color: var(--hairline);
       text-underline-offset: 4px;
       transition: text-decoration-color 0.15s ease;
     }
-    .m-masthead a:hover { text-decoration-color: var(--ink); }
+    .m-masthead a:hover { text-decoration-color: var(--ink-soft); }
     .m-sub {
       font-size: 14px;
       color: var(--ink-soft);
